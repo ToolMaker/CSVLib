@@ -87,5 +87,24 @@ namespace CSVLib
 
             return sorting;
         }
+
+        public static List<Tuple<string, string>> SortStreetAddress(List<ClientData> data)
+        {
+            if (data == null)
+            {
+                throw new ArgumentNullException("ClientData Object supplied was NULL");
+            }
+
+            if (data.Count == 0)
+            {
+                return new List<Tuple<string, string>>();
+            }
+
+            return data.Select(x => new Tuple<string, string>(
+                x.Address.Substring(0, x.Address.IndexOf(' ')),
+                x.Address.Substring(x.Address.IndexOf(' ') + 1)))
+                .OrderBy(y => y.Item2)
+                .ToList();
+        }
     }
 }

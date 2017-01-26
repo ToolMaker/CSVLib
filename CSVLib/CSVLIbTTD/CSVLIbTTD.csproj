@@ -53,11 +53,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestGetDataFromCSV.cs" />
     <Compile Include="UnitTestSortFirstNameAndLastNameData.cs" />
+    <Compile Include="UnitTestSortStreetNames.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="EmptyFile.csv" />
-    <None Include="testDataCSV.csv" />
-    <None Include="WrongDataStructure.csv" />
+    <None Include="Data\EmptyFile.csv" />
+    <None Include="Data\testDataCSV.csv" />
+    <None Include="Data\WrongDataStructure.csv" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSVLib\CSVLib.csproj">

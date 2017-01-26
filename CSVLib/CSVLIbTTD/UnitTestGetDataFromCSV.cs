@@ -29,7 +29,7 @@
         [TestMethod]
         public void ReadCSVData()
         {
-            FileInfo testFile = new FileInfo(@"..\..\testDataCSV.csv");
+            FileInfo testFile = new FileInfo(@"..\..\Data\testDataCSV.csv");
             Assert.IsTrue(testFile.Exists, "Test data file ("+testFile.FullName+") does not exist.");
 
             if (testFile.Exists)
@@ -108,7 +108,7 @@
             "Non existant file was allowed.")]
         public void ReadNonExistantCSVData()
         {
-            FileInfo nonExistantFile = new FileInfo(@"..\..\NoFile.csv");
+            FileInfo nonExistantFile = new FileInfo(@"..\..\Data\NoFile.csv");
             Assert.IsTrue(!nonExistantFile.Exists, "Negative file test failed. Please remove file (" + nonExistantFile.FullName + ") and re-run the test.");
 
             CSVLib.GetData(nonExistantFile);
@@ -119,7 +119,7 @@
             "Empty file was allowed.")]
         public void ReadEmptyCSVData()
         {
-            FileInfo emptyFile = new FileInfo(@"..\..\EmptyFile.csv");
+            FileInfo emptyFile = new FileInfo(@"..\..\Data\EmptyFile.csv");
             Assert.IsTrue(emptyFile.Exists, "Test data file (" + emptyFile.FullName + ") does not exist.");
 
             CSVLib.GetData(emptyFile);
@@ -130,7 +130,7 @@
             "Invalid data structure was allowed.")]
         public void ReadWrongDataStructureCSVData()
         {
-            FileInfo emptyFile = new FileInfo(@"..\..\WrongDataStructure.csv");
+            FileInfo emptyFile = new FileInfo(@"..\..\Data\WrongDataStructure.csv");
             Assert.IsTrue(emptyFile.Exists, "Test data file (" + emptyFile.FullName + ") does not exist.");
 
             CSVLib.GetData(emptyFile);

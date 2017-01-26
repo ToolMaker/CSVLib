@@ -1,23 +1,24 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using System.Collections.Generic;
-using CSVLib;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSVTestProject
 {
+    using CSVLib;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+
     [TestClass]
     public class UnitTestSortFirstNameAndLastNameData
     {
         [TestMethod]
         public void TestSortFirstnameAndLastName()
         {
-            FileInfo testFile = new FileInfo(@"..\..\testDataCSV.csv");
+            FileInfo testFile = new FileInfo(@"..\..\Data\testDataCSV.csv");
 
             List<ClientData> data = new List<ClientData>();
-            data.AddRange(CSVLib.CSVLib.GetData(testFile));
+            data.AddRange(CSVLib.GetData(testFile));
 
-            foreach (var item in CSVLib.CSVLib.SortFirstAndLastNames(data))
+            foreach (var item in CSVLib.SortFirstAndLastNames(data))
             {
                 switch (item.Item1)
                 {
@@ -59,13 +60,13 @@ namespace CSVTestProject
             "Null parameter object was allowed.")]
         public void TestNullParametersForData()
         {
-            CSVLib.CSVLib.SortFirstAndLastNames(null);
+            CSVLib.SortFirstAndLastNames(null);
         }
 
         [TestMethod]
         public void TestEmptyParametersForData()
         {
-            var list = new List<Tuple<string, int>>(CSVLib.CSVLib.SortFirstAndLastNames(new List<ClientData>()));
+            var list = new List<Tuple<string, int>>(CSVLib.SortFirstAndLastNames(new List<ClientData>()));
             Assert.AreEqual(list.Count, 0);
         }
     }
