@@ -14,7 +14,9 @@
         {
             FileInfo testFile = new FileInfo(@"..\..\Data\testDataCSV.csv");
 
-            List<ClientData> data = new List<ClientData>(CSVLib.GetData(testFile));
+            IEnumerable<ClientData> dataCollection = CSVLib.GetData(testFile).Result;
+
+            List<ClientData> data = new List<ClientData>(dataCollection);
 
             int counter = 0;
             foreach (var item in CSVLib.SortStreetAddress(data))

@@ -59,9 +59,7 @@
     <Compile Include="UnitTestSortStreetNames.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\EmptyFile.csv" />
     <None Include="Data\testDataCSV.csv" />
-    <None Include="Data\WrongDataStructure.csv" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSVLib\CSVLib.csproj">

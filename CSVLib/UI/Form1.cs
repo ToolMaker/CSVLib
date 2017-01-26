@@ -26,7 +26,9 @@ namespace UI
             {
                 FileInfo csvFile = new FileInfo(openCSVFileDialog.FileName);
 
-                List<ClientData> data = new List<ClientData>(CSVLib.CSVLib.GetData(csvFile));
+                IEnumerable<ClientData> dataCollection = CSVLib.CSVLib.GetData(csvFile).Result;
+
+                List<ClientData> data = new List<ClientData>(dataCollection);
 
                 var firstAndLastNamesSorted = CSVLib.CSVLib.SortFirstAndLastNamesSorted(data);
                 var streetNamesSorted = CSVLib.CSVLib.SortStreetAddress(data);

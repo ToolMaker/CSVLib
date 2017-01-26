@@ -39,12 +39,6 @@
                                 PhoneNumber = dataRow[3]
                             });
                         }
-
-                        if(data.Count == 0)
-                        {
-                            //Empty file
-                            throw new InvalidDataException("Input Data format exception");
-                        }
                     }
                     catch (ArgumentOutOfRangeException aore)
                     {

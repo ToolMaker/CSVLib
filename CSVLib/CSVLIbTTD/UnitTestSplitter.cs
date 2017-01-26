@@ -17,10 +17,13 @@
 
             if (testFile.Exists)
             {
-                List<ClientData> data = new List<ClientData>(CSVLib.GetData(testFile));
+                IEnumerable<ClientData> dataCollection = CSVLib.GetData(testFile).Result;
+
+                List<ClientData> data = new List<ClientData>(dataCollection);
 
                 var firstAndLastNamesSorted = CSVLib.SortFirstAndLastNamesSorted(data);
 
             }
+        }
     }
 }
