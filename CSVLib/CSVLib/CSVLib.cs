@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace CSVLib
 {
+    /// <summary>
+    /// CSVLib is used to manage a static CS structure for out Assement
+    /// NOTE: I'm not fond of comments as I believe code should be readable and not heavily commented,
+    ///         If code is heavily commented then it created maintenace work.
+    ///         However if there is a documentation requirment then the subject is debatble
+    /// </summary>
     public class CSVLib
     {
         public static IEnumerable<ClientData> GetData(FileInfo file)
@@ -56,6 +62,30 @@ namespace CSVLib
             }
 
             return data;
+        }
+
+        public static IEnumerable<Tuple<string, int>> SortFirstAndLastNames(List<ClientData> data)
+        {
+            if (data == null)
+            {
+                throw new ArgumentNullException("ClientData Object supplied was NULL");
+            }
+
+            if (data.Count == 0)
+            {
+                return new List<Tuple<string, int>>();
+            }
+
+            List<string> firstNamesAndLastNames = new List<string>(data.Select(x => x.FirstName));
+            firstNamesAndLastNames.AddRange(data.Select(x => x.LastName));
+
+            var sorting = firstNamesAndLastNames.Distinct()
+                .Select(x => new Tuple<string, int>(x, firstNamesAndLastNames.Where(c => c.Equals(x)).Count()))
+                .OrderByDescending(o => o.Item2)
+                .ThenBy(n => n.Item1)
+                .ToList();
+
+            return sorting;
         }
     }
 }
