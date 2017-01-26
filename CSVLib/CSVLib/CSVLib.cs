@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CSVLib
+﻿namespace CSVLib
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+
     /// <summary>
     /// CSVLib is used to manage a static CS structure for out Assement
     /// NOTE: I'm not fond of comments as I believe code should be readable and not heavily commented,

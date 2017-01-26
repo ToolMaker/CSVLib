@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVLib", "CSVLib\CSVLib.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVLIbTTD", "CSVLIbTTD\CSVLIbTTD.csproj", "{E0581AA1-23BF-4647-9383-2E06A5D3F30D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{F2EE0B2B-F47E-4E2F-ACDB-7314B606128E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E0581AA1-23BF-4647-9383-2E06A5D3F30D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0581AA1-23BF-4647-9383-2E06A5D3F30D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0581AA1-23BF-4647-9383-2E06A5D3F30D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2EE0B2B-F47E-4E2F-ACDB-7314B606128E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2EE0B2B-F47E-4E2F-ACDB-7314B606128E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2EE0B2B-F47E-4E2F-ACDB-7314B606128E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2EE0B2B-F47E-4E2F-ACDB-7314B606128E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
