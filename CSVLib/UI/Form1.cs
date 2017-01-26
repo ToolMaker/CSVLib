@@ -21,9 +21,13 @@ namespace UI
 
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
+            labelFilesCreated.Text = string.Empty;
+            labelDirectories.Text = string.Empty;
+
             if (openCSVFileDialog.ShowDialog() == DialogResult.OK
                 && openCSVFileDialog.CheckFileExists)
             {
+                textBoxFileName.Text = openCSVFileDialog.FileName;
                 FileInfo csvFile = new FileInfo(openCSVFileDialog.FileName);
 
                 IEnumerable<ClientData> dataCollection = CSVLib.CSVLib.GetData(csvFile).Result;
@@ -33,7 +37,11 @@ namespace UI
                 var firstAndLastNamesSorted = CSVLib.CSVLib.SortFirstAndLastNamesSorted(data);
                 var streetNamesSorted = CSVLib.CSVLib.SortStreetAddress(data);
 
-                //Back to TDD
+                CSVLib.CSVLib.SplitData(csvFile.Directory,firstAndLastNamesSorted,streetNamesSorted);
+
+                labelFilesCreated.Text = "Files Created, check following Directory for FirstAndLastNames.txt and StreetNames.txt:";
+
+                labelDirectories.Text = csvFile.Directory.FullName;
             }
         }
     }
