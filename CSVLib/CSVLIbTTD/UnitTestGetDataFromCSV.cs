@@ -25,6 +25,7 @@
         /// 7    James       Owen	    8 Crimson Rd	    32114566
         /// 8    Graham      Brown	    94 Roland St	    8766556
         /// </summary>
+        
         [TestMethod]
         public void ReadCSVData()
         {
@@ -100,6 +101,39 @@
                     throw new AssertFailedException("Test data invalid at row 8");
                 }
             }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FileNotFoundException),
+            "Non existant file was allowed.")]
+        public void ReadNonExistantCSVData()
+        {
+            FileInfo nonExistantFile = new FileInfo(@"..\..\NoFile.csv");
+            Assert.IsTrue(!nonExistantFile.Exists, "Negative file test failed. Please remove file (" + nonExistantFile.FullName + ") and re-run the test.");
+
+            CSVLib.GetData(nonExistantFile);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException),
+            "Empty file was allowed.")]
+        public void ReadEmptyCSVData()
+        {
+            FileInfo emptyFile = new FileInfo(@"..\..\EmptyFile.csv");
+            Assert.IsTrue(emptyFile.Exists, "Test data file (" + emptyFile.FullName + ") does not exist.");
+
+            CSVLib.GetData(emptyFile);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException),
+            "Invalid data structure was allowed.")]
+        public void ReadWrongDataStructureCSVData()
+        {
+            FileInfo emptyFile = new FileInfo(@"..\..\WrongDataStructure.csv");
+            Assert.IsTrue(emptyFile.Exists, "Test data file (" + emptyFile.FullName + ") does not exist.");
+
+            CSVLib.GetData(emptyFile);
         }
     }
 }

@@ -54,7 +54,9 @@
     <Compile Include="UnitTestGetDataFromCSV.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="EmptyFile.csv" />
     <None Include="testDataCSV.csv" />
+    <None Include="WrongDataStructure.csv" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSVLib\CSVLib.csproj">
