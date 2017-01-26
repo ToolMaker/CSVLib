@@ -56,6 +56,12 @@
   <ItemGroup>
     <None Include="testDataCSV.csv" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CSVLib\CSVLib.csproj">
+      <Project>{8a5b013d-c2bb-44c7-a475-d928a00cf00f}</Project>
+      <Name>CSVLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
