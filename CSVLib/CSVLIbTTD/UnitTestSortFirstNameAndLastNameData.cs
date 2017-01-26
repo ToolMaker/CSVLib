@@ -7,6 +7,9 @@ namespace CSVTestProject
     using System.Collections.Generic;
     using System.IO;
 
+    /// <summary>
+    /// This Unit Test will test the Sort First and Last names funtionality
+    /// </summary>
     [TestClass]
     public class UnitTestSortFirstNameAndLastNameData
     {
@@ -15,8 +18,7 @@ namespace CSVTestProject
         {
             FileInfo testFile = new FileInfo(@"..\..\Data\testDataCSV.csv");
 
-            List<ClientData> data = new List<ClientData>();
-            data.AddRange(CSVLib.GetData(testFile));
+            List<ClientData> data = new List<ClientData>(CSVLib.GetData(testFile));
 
             foreach (var item in CSVLib.SortFirstAndLastNames(data))
             {
