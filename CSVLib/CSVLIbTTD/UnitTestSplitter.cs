@@ -23,6 +23,9 @@
 
                 var firstAndLastNamesSorted = CSVLib.SortFirstAndLastNamesSorted(data);
 
+                var streetNamesSorted = CSVLib.SortStreetAddress(data);
+
+                CSVLib.SplitData(testFile.Directory, firstAndLastNamesSorted, streetNamesSorted);
             }
         }
     }

@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Text;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -58,12 +59,59 @@
             return data;
         }
 
-        public static async void SplitData(DirectoryInfo directory, IEnumerable<Tuple<string, int>> firstAndLastNamesSorted, List<Tuple<string, string>> streetNamesSorted)
+        public static void SplitData(DirectoryInfo directory, List<Tuple<string, int>> firstAndLastNamesSorted, List<Tuple<string, string>> streetNamesSorted)
         {
-            //WriteFirstAndLastNamesAsync(firstAndLastNamesSorted);
+            var firstAndLastNameSlitTask = WriteFirstAndLastNamesAsync(firstAndLastNamesSorted, directory.FullName + @"\FirstAndLastNames.txt");
+
+            var streetNamesSlitTask = WriteStreetNamesAsync(streetNamesSorted, directory.FullName + @"\StreetNames.txt");
+
+            firstAndLastNameSlitTask.Wait();
+            streetNamesSlitTask.Wait();
         }
 
-        public static IEnumerable<Tuple<string, int>> SortFirstAndLastNamesSorted(List<ClientData> data)
+        private static async Task<bool> WriteStreetNamesAsync(List<Tuple<string, string>> streetNamesSorted, string fileName)
+        {
+            FileInfo file = new FileInfo(fileName);
+
+            if (file.Exists)
+            {
+                file.Delete();
+            }
+
+            using (StreamWriter writer = new StreamWriter(file.OpenWrite()))
+            {
+                StringBuilder writeString = new StringBuilder();
+                streetNamesSorted.ForEach((item) => {
+                    writeString.AppendFormat("{0} {1}{2}", item.Item1, item.Item2,Environment.NewLine);
+                });
+
+                await writer.WriteAsync(writeString.ToString());
+            }
+            return true;
+        }
+
+        private static async Task<bool> WriteFirstAndLastNamesAsync(List<Tuple<string, int>> firstAndLastNamesSorted, string fileName)
+        {
+            FileInfo file = new FileInfo(fileName);
+
+            if (file.Exists)
+            {
+                file.Delete();
+            }
+
+            using (StreamWriter writer = new StreamWriter(file.OpenWrite()))
+            {
+                StringBuilder writeString = new StringBuilder();
+                firstAndLastNamesSorted.ForEach((item) => {
+                    writeString.AppendFormat("{0}, {1}{2}", item.Item1, item.Item2, Environment.NewLine);
+                });
+
+                await writer.WriteAsync(writeString.ToString());
+            }
+            return true;
+        }
+
+        public static List<Tuple<string, int>> SortFirstAndLastNamesSorted(List<ClientData> data)
         {
             if (data == null)
             {
