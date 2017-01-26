@@ -14,7 +14,7 @@
     /// </summary>
     public class CSVLib
     {
-        public static IEnumerable<ClientData> GetData(FileInfo file)
+        public static async Task<IEnumerable<ClientData>> GetData(FileInfo file)
         {
             List<ClientData> data = new List<ClientData>();
 
@@ -29,7 +29,8 @@
 
                         while (!reader.EndOfStream)
                         {
-                            string[] dataRow = reader.ReadLine().Split(',');
+                            string dataLine = await reader.ReadLineAsync();
+                            string[] dataRow = dataLine.Split(',');
                             data.Add(new ClientData()
                             {
                                 FirstName = dataRow[0],
@@ -61,6 +62,11 @@
             }
 
             return data;
+        }
+
+        public static async void SplitData(DirectoryInfo directory, IEnumerable<Tuple<string, int>> firstAndLastNamesSorted, List<Tuple<string, string>> streetNamesSorted)
+        {
+            //WriteFirstAndLastNamesAsync(firstAndLastNamesSorted);
         }
 
         public static IEnumerable<Tuple<string, int>> SortFirstAndLastNamesSorted(List<ClientData> data)

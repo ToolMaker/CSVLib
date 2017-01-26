@@ -34,8 +34,9 @@
 
             if (testFile.Exists)
             {
-                List<ClientData> data = new List<ClientData>();
-                data.AddRange(CSVLib.GetData(testFile));
+                IEnumerable<ClientData> dataCollection = CSVLib.GetData(testFile).Result;
+
+                List<ClientData> data = new List<ClientData>(dataCollection);
 
                 if (!(StringAssert.Equals(data[0].FirstName, "Jimmy")
                     && StringAssert.Equals(data[0].LastName, "Smith")
