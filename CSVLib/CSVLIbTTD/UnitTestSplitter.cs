@@ -26,6 +26,12 @@
                 var streetNamesSorted = CSVLib.SortStreetAddress(data);
 
                 CSVLib.SplitData(testFile.Directory, firstAndLastNamesSorted, streetNamesSorted);
+
+                FileInfo namesFile = new FileInfo(testFile.Directory+ @"\FirstAndLastNames.txt");
+                Assert.IsTrue(namesFile.Exists, "FirstAndLastNames.txt should have been created");
+
+                FileInfo streetNames = new FileInfo(testFile.Directory + @"\StreetNames.txt");
+                Assert.IsTrue(namesFile.Exists, "StreetNames.txt should have been created");
             }
         }
     }
