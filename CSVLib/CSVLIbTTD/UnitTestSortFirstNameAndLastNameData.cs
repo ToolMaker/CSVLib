@@ -20,7 +20,7 @@ namespace CSVTestProject
 
             List<ClientData> data = new List<ClientData>(CSVLib.GetData(testFile));
 
-            foreach (var item in CSVLib.SortFirstAndLastNames(data))
+            foreach (var item in CSVLib.SortFirstAndLastNamesSorted(data))
             {
                 switch (item.Item1)
                 {
@@ -62,13 +62,13 @@ namespace CSVTestProject
             "Null parameter object was allowed.")]
         public void TestNullParametersForData()
         {
-            CSVLib.SortFirstAndLastNames(null);
+            CSVLib.SortFirstAndLastNamesSorted(null);
         }
 
         [TestMethod]
         public void TestEmptyParametersForData()
         {
-            var list = new List<Tuple<string, int>>(CSVLib.SortFirstAndLastNames(new List<ClientData>()));
+            var list = new List<Tuple<string, int>>(CSVLib.SortFirstAndLastNamesSorted(new List<ClientData>()));
             Assert.AreEqual(list.Count, 0);
         }
     }

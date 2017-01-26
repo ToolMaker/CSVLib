@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// CSVLib is used to manage a static CS structure for out Assement
@@ -62,7 +63,7 @@
             return data;
         }
 
-        public static IEnumerable<Tuple<string, int>> SortFirstAndLastNames(List<ClientData> data)
+        public static IEnumerable<Tuple<string, int>> SortFirstAndLastNamesSorted(List<ClientData> data)
         {
             if (data == null)
             {
